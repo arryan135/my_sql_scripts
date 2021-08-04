@@ -1,5 +1,5 @@
 -- number of books in db
-SELECT COUNT(title) AS "num books" FROM books;
+SELECT COUNT(*) AS "num books" FROM books;
 
 -- number of books released in each year
 SELECT released_year, COUNT(*) AS "num books" FROM books GROUP BY released_year ORDER BY 1 DESC;
@@ -7,7 +7,7 @@ SELECT released_year, COUNT(*) AS "num books" FROM books GROUP BY released_year 
 -- total number of books in stock
 SELECT SUM(stock_quantity) FROM books;
 
--- average relased yaer for each author
+-- average relased year for each author
 SELECT 
   CONCAT (author_fname, " ", author_lname) AS "author", AVG(released_year) 
   FROM books
@@ -19,6 +19,7 @@ SELECT
   FROM books
   WHERE pages = (SELECT MAX(pages) FROM books);
 
+-- faster way of doing the above
 SELECT
   CONCAT(author_fname, " ", author_lname)  AS "author"
   FROM books
