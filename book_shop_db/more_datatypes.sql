@@ -19,5 +19,3 @@ CREATE TABLE tweets (
   username VARCHAR(20),
   time TIMESTAMP DEFAULT NOW()
 );
-
-
