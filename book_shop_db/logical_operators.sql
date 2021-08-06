@@ -102,7 +102,7 @@ FROM books;
 
 SELECT CONCAT(author_fname, " ", author_lname) AS "author",
   CASE  
-    WHEN COUNT(*) = 1 THEN CONCAT("1 book")
+    WHEN COUNT(*) = 1 THEN "1 book"
     ELSE CONCAT(COUNT(*), " books")
   END AS "COUNT"
 FROM books GROUP BY author_lname, author_fname;
