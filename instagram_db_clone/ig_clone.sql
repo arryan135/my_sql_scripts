@@ -25,3 +25,12 @@ CREATE TABLE comments (
   FOREIGN KEY(user_id) REFERENCES users(id),
   FOREIGN KEY(photo_id) REFERENCES photos(id)
 );
+
+CREATE TABLE likes (
+  user_id INTEGER NOT NULL,
+  photo_id INTEGER NOT NULL,
+  created_at TIMESTAMP DEFAULT NOW(),
+  FOREIGN KEY(user_id) REFERENCES users(id),
+  FOREIGN KEY(photos) REFERENCES photos(id),
+  PRIMARY KEY(user_id, photo_id) -- to ensure that there exists unique like from a user on a particular image
+);
