@@ -34,3 +34,12 @@ CREATE TABLE likes (
   FOREIGN KEY(photos) REFERENCES photos(id),
   PRIMARY KEY(user_id, photo_id) -- to ensure that there exists unique like from a user on a particular image
 );
+
+CREATE TABLE follows (
+  follower_id INTEGER NOT NULL,
+  followee_id INTEGER NOT NULL,
+  created_at TIMESTAMP DEFAULT NOW(),
+  FOREIGN KEY(follower_id) REFERENCES users(id),
+  FOREIGN KEY(followee_id) REFERENCES users(id),
+  PRIMARY KEY(follower_id, followee_id)
+);
